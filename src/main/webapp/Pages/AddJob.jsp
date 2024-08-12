@@ -1,3 +1,7 @@
+<%@ page import="java.sql.Connection" %>
+<%@ page import="DAO.MyDatabase" %>
+<%@ page import="java.sql.Statement" %>
+<%@ page import="java.sql.ResultSet" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!DOCTYPE html>
@@ -24,6 +28,20 @@
     </style>
 </head>
 <body>
+
+<%
+    String  sql = "select * from recuruiter";
+    try
+    {
+        Connection con = MyDatabase.getConnection();
+        Statement st = con.createStatement();
+        ResultSet rs = st.executeQuery(sql);
+
+        while (rs.next())
+        {
+            String id = rs.getString(1);
+
+%>
 <div class="pd-ltr-20 xs-pd-20-10" style="display: flex; justify-content: center;">
     <div class="max-width-1000" style="width: 100%; max-width: 1000px;">
         <div class="pd-20 card-box mb-30">
@@ -33,7 +51,7 @@
             <div class="wizard-content">
                 <form id="jobForm" action="AddJobServlet" method="post" enctype="multipart/form-data">
                     <section>
-                        <input type="hidden" value="1" name="r_id">
+                        <input type="hidden" value="<%=id%>" name="r_id">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -82,12 +100,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Job Adder :</label>
-                                    <input type="text" value="Admin" name="JobAdder" class="form-control" readonly/>
-                                </div>
-                            </div>
+
                         </div>
                         <div class="row">
                             <div class="col-md-12">
@@ -120,7 +133,14 @@
         </div>
     </div>
 </div>
+<%
+        }
 
+    }catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+%>
 <script>
 
 </script>

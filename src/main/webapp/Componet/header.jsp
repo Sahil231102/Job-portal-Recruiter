@@ -65,6 +65,7 @@
                             <nav class="d-none d-lg-table">
                                 <ul id="navigation2">
                                     <li><a style="text-decoration: none" href=".?pname=Home">Home</a></li>
+                                    <li><a style="text-decoration: none" href=".?pname=ShowAllJob">Show All Job</a> </li>
                                     <li><a style="text-decoration: none" href=".?pname=showJob">Show Job</a></li>
                                     <li><a style="text-decoration: none" href=".?pname=AddJob">Add Job</a></li>
                                     <li><a style="text-decoration: none" href=".?pname=jobApplyData">Apply</a></li>

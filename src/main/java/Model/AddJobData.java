@@ -9,11 +9,11 @@ public class AddJobData {
     private String jobdesc;
     private String Qualificaton_skill;
     private String Benefites;
-    private String jobAdder;
+
 
     private byte[] Hpimg;
 
-    public AddJobData(String rId, String jobTitle, String employmentType, String minsalary, String maxsalary, String jobdesc, String qualificationSkill, String benefits, byte[] posterimg, String jobAdder) {
+    public AddJobData(String rId, String jobTitle, String employmentType, String minsalary, String maxsalary, String jobdesc, String qualificationSkill, String benefits, byte[] posterimg) {
         this.r_id=rId;
         this.jobTitle = jobTitle;
         this.minsalary = minsalary;
@@ -22,7 +22,6 @@ public class AddJobData {
         this.jobdesc = jobdesc;
         this.Qualificaton_skill = qualificationSkill;
         this.Benefites = benefits;
-        this.jobAdder = jobAdder;
         this.Hpimg = posterimg;
     }
 
@@ -93,13 +92,7 @@ public class AddJobData {
         Benefites = benefites;
     }
 
-    public String getJobAdder() {
-        return jobAdder;
-    }
 
-    public void setJobAdder(String jobAdder) {
-        this.jobAdder = jobAdder;
-    }
 
     public byte[] getHpimg() {
         return Hpimg;

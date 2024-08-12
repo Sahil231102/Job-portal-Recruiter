@@ -84,7 +84,7 @@
     <link rel="stylesheet" href="./RecruiterStyle/assets/css/slick.css">
     <link rel="stylesheet" href="./RecruiterStyle/assets/css/nice-select.css">
     <link rel="stylesheet" href="./RecruiterStyle/Doc/css/style.css">
-    <link rel="stylesheet" href="RecruiterStyle/Doc/css/main.css">
+    <link rel="stylesheet" href="./RecruiterStyle/Doc/css/main.css">
 
 
 </head>
