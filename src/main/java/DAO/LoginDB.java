@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 public class LoginDB {
     public boolean LoginDB(LoginModel LoginModel) {
-        String sql = "select * from vendor where Email = ? and Password = ?";
+        String sql = "select * from recuruiter where Email = ? and Password = ?";
 
         try
         {

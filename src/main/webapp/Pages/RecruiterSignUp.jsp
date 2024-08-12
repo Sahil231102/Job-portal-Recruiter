@@ -12,7 +12,7 @@
 <div class="container" >
     <div class="title">Recruiter Registration</div>
     <div class="content">
-        <form action="../VendorSignupServlet" method="post" enctype="multipart/form-data">
+        <form action="../RecruiterSignUpServlet" method="post" enctype="multipart/form-data">
             <div class="user-details">
 
                 <div class="input-box">

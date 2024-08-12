@@ -56,11 +56,11 @@
                     <div class="row">
                         <div class="col-xl-6 col-lg-9 col-md-10">
                             <div class="hero__caption">
-                                <h1 style="font-family:'Josefin Sans', sans-serif">Find the most exciting startup jobs</h1>
+                                <h1 style="font-family:'Josefin Sans', sans-serif">Join the most exciting startup teams.</h1>
                             </div>
 
                         </div>
-                        <img src="./RecruiterStyle/assets/img/homrpageimg.png" height="600px" WIDTH="600px">
+                        <img src="./RecruiterStyle/assets/img/Home/home.svg" height="500px" WIDTH="500px">
 
 
                     </div>

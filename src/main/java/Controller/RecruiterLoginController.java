@@ -24,14 +24,14 @@ public class RecruiterLoginController extends HttpServlet {
 
 
         PrintWriter out = resp.getWriter();
-        String V_email = req.getParameter("V_email");
-        String V_password = req.getParameter("V_password");
+        String R_email = req.getParameter("R_email");
+        String R_password = req.getParameter("R_password");
         String loginvnd = req.getParameter("loginvnd");
-        System.out.println(V_email);
-        System.out.println(V_password);
+        System.out.println(R_email);
+        System.out.println(R_password);
         System.out.println(loginvnd);
 
-        LoginModel loginModel = new LoginModel(V_email,V_password);
+        LoginModel loginModel = new LoginModel(R_email,R_password);
         LoginDB vDB = new LoginDB();
         boolean vLogin = vDB.LoginDB(loginModel);
 
@@ -39,10 +39,10 @@ public class RecruiterLoginController extends HttpServlet {
 
         if (vLogin) {
 
-            Cookie Vem = new Cookie("Vem",V_email);
-            Cookie vnd = new Cookie("vnd",loginvnd);
+            Cookie Vem = new Cookie("Vem",R_email);
+
             resp.addCookie(Vem);
-            resp.addCookie(vnd);
+
             resp.sendRedirect(req.getContextPath() + "/?pname=Home");
         }
         else {
