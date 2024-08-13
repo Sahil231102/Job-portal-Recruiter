@@ -77,38 +77,39 @@
                             </nav>
                         </div>
 
-<%--                        <%--%>
-<%--                            Cookie[] cookies = request.getCookies();--%>
-<%--                            String userEmail = null;--%>
+                        <%
+                            Cookie[] cookies = request.getCookies();
+                            String R_Email = null;
 
-<%--                            if (cookies != null) {--%>
-<%--                                for (Cookie cookie : cookies) {--%>
-<%--                                    if ("em".equals(cookie.getName())) {--%>
-<%--                                        userEmail = cookie.getValue();--%>
-<%--                                        break;--%>
-<%--                                    }--%>
-<%--                                }--%>
-<%--                            }--%>
+                            if (cookies != null) {
+                                for (Cookie cookie : cookies) {
+                                    if ("Vem".equals(cookie.getName())) {
+                                        R_Email = cookie.getValue();
+                                        break;
+                                    }
+                                }
+                            }
 
-<%--                            try {--%>
-<%--                                Connection con = MyDatabase.getConnection();--%>
-<%--                                PreparedStatement psmt = con.prepareStatement("SELECT Uimg FROM user WHERE Email=?");--%>
-<%--                                psmt.setString(1, userEmail);--%>
-<%--                                ResultSet rs = psmt.executeQuery();--%>
-<%--                                if (rs.next()) {--%>
-<%--                                    byte[] uimg = rs.getBytes("Uimg");--%>
-<%--                                    String imgbyte = Base64.getEncoder().encodeToString(uimg);--%>
-<%--                                    String userimges = "data:image/png;base64," + imgbyte;--%>
-<%--                        %>--%>
+                            try {
+                                Connection con = MyDatabase.getConnection();
+                                PreparedStatement psmt = con.prepareStatement("SELECT Cimg FROM recuruiter WHERE Email=?");
+                                psmt.setString(1, R_Email);
+                                ResultSet rs = psmt.executeQuery();
+                                if (rs.next()) {
+                                    byte[] cimg = rs.getBytes("Cimg");
+                                    String imgbyte = Base64.getEncoder().encodeToString(cimg);
+                                    String cimges = "data:image/png;base64," + imgbyte;
+                        %>
                         <a href=".?pname=userProfile">
-                            <img style="height: 50px; border-radius: 50px; align-items: end; border-style: solid; border-color: #4C5B5C" width="50px" src="./RecruiterStyle/assets/img/prising/2.png" />
+                            <img style="height: 50px; border-radius: 50px; align-items: end; border-style: solid; border-color: #4C5B5C" width="50px" src="<%=cimges%>" />
                         </a>
-<%--                        <%--%>
-<%--                                }--%>
-<%--                            } catch (Exception e) {--%>
-<%--                                e.printStackTrace();--%>
-<%--                            }--%>
-<%--                        %>--%>
+
+                        <%
+                                }
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        %>
                     </div>
                 </div>
                 <div class="col-lg-12 col-md-13"></div>

@@ -2,6 +2,7 @@
 <%@ page import="DAO.MyDatabase" %>
 <%@ page import="java.sql.Statement" %>
 <%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.sql.PreparedStatement" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!DOCTYPE html>
@@ -28,18 +29,32 @@
     </style>
 </head>
 <body>
-
 <%
-    String  sql = "select * from recuruiter";
+    Cookie[] cookies = request.getCookies();
+    String R_Email = null;
+    if (cookies != null) {
+        for (Cookie cookie : cookies) {
+            if ("Vem".equals(cookie.getName())) {
+                R_Email = cookie.getValue();
+                System.out.println(R_Email);
+                break;
+            }
+        }
+    }
+%>
+<%
+
+
     try
     {
         Connection con = MyDatabase.getConnection();
-        Statement st = con.createStatement();
-        ResultSet rs = st.executeQuery(sql);
+        PreparedStatement psmt = con.prepareStatement("select * from recuruiter where Email= ?");
+        psmt.setString(1,R_Email);
+        ResultSet rs = psmt.executeQuery();
 
-        while (rs.next())
+        while(rs.next())
         {
-            String id = rs.getString(1);
+            String id = rs.getString("r_id");
 
 %>
 <div class="pd-ltr-20 xs-pd-20-10" style="display: flex; justify-content: center;">
