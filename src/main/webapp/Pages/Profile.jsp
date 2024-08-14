@@ -91,6 +91,7 @@
 
             if(rs.next())
             {
+                String rid = rs.getString("r_id");
                 String cname=rs.getString("Company_Name");
                 String email=rs.getString("Email");
                 String phone =rs.getString("Phone_Number");
@@ -220,29 +221,32 @@
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
+
+                                            <input type="hidden" class="form-control" name="id" value="<%=rid%>" readonly />
+
                                         <div class="modal-body">
-                                            <label>User Id</label>
-                                            <input type="text" class="form-control" name="id" value="" readonly />
+                                            <label>Company name</label>
+                                            <input type="text" class="form-control" name="company_name" value="<%=cname%>" />
                                         </div>
                                         <div class="modal-body">
-                                            <label>First name</label>
-                                            <input type="text" class="form-control" name="fname" value="" />
+                                            <label>phone Number</label>
+                                            <input type="tel" maxlength="10" class="form-control" name="phone" value="<%=phone%>" />
                                         </div>
                                         <div class="modal-body">
-                                            <label>Last name</label>
-                                            <input type="text" class="form-control" name="lname" value="" />
+                                            <label>Address</label>
+                                            <input type="text" class="form-control" name="address" value="<%=address%>" />
                                         </div>
                                         <div class="modal-body">
-                                            <label>Email Address</label>
-                                            <input type="text" class="form-control" name="email" value="" />
+                                            <label>City</label>
+                                            <input type="text" class="form-control" name="city" value="<%=city%>" />
                                         </div>
                                         <div class="modal-body">
-                                            <label>Phone Number</label>
-                                            <input type="tel" maxlength="10" class="form-control" name="phone" value="" />
+                                            <label>State</label>
+                                            <input type="text" class="form-control" name="state" value="<%=state%>" />
                                         </div>
                                         <div class="modal-body">
-                                            <label>Gender</label>
-                                            <input type="text" class="form-control" name="Gender" value="" />
+                                            <label>Country</label>
+                                            <input type="text" class="form-control" name="country" value="<%=country%>" />
                                         </div>
                                         <div class="modal-body">
                                             <label>Choose Images</label>
