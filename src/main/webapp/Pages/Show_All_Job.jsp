@@ -120,8 +120,9 @@
                     <% try {
                         Connection con = MyDatabase.getConnection();
                         Statement st = con.createStatement();
-                        ResultSet rs = st.executeQuery("select * from job_add ");
+                        ResultSet rs = st.executeQuery("select * from  job_add inner join recuruiter on job_add.r_id = recuruiter.r_id");
                         while (rs.next()) {
+                            String companyname = rs.getString("Company_Name");
                             String job_Title = rs.getString("Job_Title");
                             String job_Description = rs.getString("JobDescripton");
                             String employentType = rs.getString("EmploymentType");
@@ -137,7 +138,7 @@
                         <div class="container-card bg-blue-box">
                             <div class="row" style="display: flex; align-items: center; margin-bottom: 20px;">
                                 <img src="<%= pimgs %>" style=" border-radius: 50%; margin-right: 15px;" alt="Job Poster Image"/>
-                                <h6 style="margin: 0; font-size: 18px; font-weight: 600; color: #FFFFFF;"><%= job_Title %></h6>
+                                <h6 style="margin: 0; font-size: 18px; font-weight: 600; color: #FFFFFF;"><%=companyname %></h6>
                             </div>
 
                             <p class="card-title"><%= job_Title %></p>
