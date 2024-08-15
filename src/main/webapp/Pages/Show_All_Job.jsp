@@ -10,105 +10,120 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&display=swap');
 
-    <STYLE>
-        .overflow-text {
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            width: 200px;
-            color: #0fd850;
-            padding: 10px;
-        }
         .container {
-            max-width: 1232px;
-            width: 100%;
-            padding: 0 50px;
-
+            width: 1200px;
+            padding: 0;
+            margin: 0 auto;
         }
 
-        .logo a {
-            display: flex;
-            align-items: center;
-            font-size: 24px;
-            font-weight: 700;
-        }
-
-        .logo a img {
-            max-width: 44px;
-        }
-
-        .logo a span {
-            color: #E1E4E8;
-            margin-left: 12px;
-        }
-
-        .layout-card-frame {
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-        }
-        .layout-card-frame.layout-card-frame--light .layout-card-body{
-            background: #0fd850;
-        }
-
-        .layout-card-header {
-            height: 80px;
-            flex-shrink: 0;
-            background: #24292E;
-            border-bottom: 1px solid #1B1F23;
-        }
-
-        .layout-card-header .container {
-            display: inline-block;
-            align-items: center;
-            justify-content: space-between;
-            height: 100%;
-        }
-        .layout-card-body {
-            height: 100%;
-            overflow: auto;
-
+        .gradient-cards {
             display: grid;
-            place-items: center;
-            padding: 25px;
+            grid-template-columns: repeat(3, 1fr); /* 3 columns */
+            grid-template-rows: repeat(3, 1fr); /* 3 rows */
+            gap: 32px;
+            padding: 30px;
+        }
 
-            font-family: 'Inter', sans-serif;
+        .container-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 40px;
+            color: #fff;
+            font-weight: 600;
+            line-height: 60px;
         }
-        .layout-card-wrap{
+
+        .card {
+            text-wrap: nowrap;
+            max-width: 350px;
+            border: 0;
             width: 100%;
+            margin-inline: auto;
         }
-    </STYLE>
+
+        .container-card {
+            position: relative;
+            border: 2px solid transparent;
+            background: linear-gradient(71deg, #080509, #1a171c, #080509);
+            background-clip: padding-box;
+            border-radius: 45px;
+            padding: 40px;
+        }
+
+        .bg-green-box::after,
+        .bg-white-box::after,
+        .bg-yellow-box::after,
+        .bg-blue-box::after {
+            position: absolute;
+            top: -1px;
+            bottom: -1px;
+            left: -1px;
+            right: -1px;
+            content: "";
+            z-index: -1;
+            border-radius: 45px;
+        }
+
+        .bg-green-box::after {
+            background: linear-gradient(71deg, #0d1212, #3da077, #0d1212);
+        }
+
+        .bg-white-box::after {
+            background: linear-gradient(71deg, #121013, #b0afb0, #121013);
+        }
+
+        .bg-yellow-box::after {
+            background: linear-gradient(71deg, #110e0e, #afa220, #110e0e);
+        }
+
+        .bg-blue-box::after {
+            background: linear-gradient(71deg, #0c0a0e, #5f6fad, #0c0a0e);
+        }
+
+        .card-title {
+            font-weight: 600;
+            color: white;
+            letter-spacing: -0.02em;
+            line-height: 40px;
+            font-style: normal;
+            font-size: 28px;
+            padding-bottom: 8px;
+        }
+
+        .card-description {
+            font-weight: 600;
+            line-height: 32px;
+            color: hsla(0, 0%, 100%, 0.5);
+            font-size: 16px;
+            max-width: 470px;
+        }
+        .card img {
+            width: 70px; /* Fixed width */
+            height: 70px; /* Fixed height */
+            border-radius: 50%; /* Optional: Make the image circular */
+            margin-bottom: 15px; /* Space between image and title */
+        }
+    </style>
 </head>
 <body>
 
 <div class="pd-ltr-20 xs-pd-20-10">
     <div class="min-height-200px">
         <div class="container pd-0">
-            <div class="page-header">
-                <div class="row">
-                    <div class="col-md-12 col-sm-12">
-                        <div class="title">
-                            <h4>Job Details</h4>
-                        </div>
 
-                    </div>
-                </div>
-            </div>
 
             <div class="contact-directory-list">
-                <%
-                    try {
-
+                <div class="gradient-cards">
+                    <% try {
                         Connection con = MyDatabase.getConnection();
                         Statement st = con.createStatement();
                         ResultSet rs = st.executeQuery("select * from job_add ");
-                        int count = 0;
                         while (rs.next()) {
-
-                            String company_Name = rs.getString("company_Name");
                             String job_Title = rs.getString("Job_Title");
-                            String job_Description = rs.getString("JobDescription");
+                            String job_Description = rs.getString("JobDescripton");
                             String employentType = rs.getString("EmploymentType");
                             String Minsalary = rs.getString("Minsalary");
                             String Maxsalary = rs.getString("Maxsalary");
@@ -117,83 +132,26 @@
                             byte[] pimg = rs.getBytes("PosterImg");
                             String imgByte = Base64.getEncoder().encodeToString(pimg);
                             String pimgs = "data:image/png;base64," + imgByte;
-
-
-
-                            if (count % 3 == 0) {
-                                if (count != 0) {
-                %>
-                </ul>
-                <%
-                    }
-                %>
-                <ul class="row">
-                    <%
-                        }
                     %>
-                    <div class="col-12 col-sm-6 col-md-4">
-                        <div class="layout-card-body">
-                            <div class="layout-card-wrap">
-                                <!-- Card HTML Start -->
-                                <div class="card3">
-                                    <div class="card__header">
-                                        <div class="card-badges">
-                                            <span class="badge badge-light" style="color: green;font-weight: bold">Active</span>
-                                        </div>
-
-                                        <div class="card-badges">
-                                            <span class="badge badge-light" style="color: red;font-weight: bold"><A href="./?pn=jobinfo&job_id=<%="job_id"%>">View</A></span>
-                                        </div>
-
-                                    </div>
-                                    <div class="card__body">
-                                        <div class="user-info">
-                                            <div class="avatar">
-                                                <div class="img-box">
-                                                    <img src="<%=pimgs%>" width="70" height="60" alt="">
-                                                </div>
-                                            </div>
-                                            <div class="name" style="font-family: 'Josefin Sans', sans-serif;font-size: 30px">
-                                                <span><%=company_Name%></span>
-                                                <h6 style="color: #cb4b16"><%=job_Title%></h6>
-                                            </div>
-                                        </div>
-                                        <div class="overflow-text" style="font-family: 'Josefin Sans', sans-serif;font-size: 20px;max-lines: none" ><%=job_Description%></div>
-                                    </div>
-
-                                    <div class="card__footer" style="font-family: 'Josefin Sans', sans-serif;font-size: 20px">
-                                        <%="startDate"%>
-                                    </div>
-
-                                </div>
-                                <!-- Card HTML End -->
+                    <div class="card">
+                        <div class="container-card bg-blue-box">
+                            <div class="row" style="display: flex; align-items: center; margin-bottom: 20px;">
+                                <img src="<%= pimgs %>" style=" border-radius: 50%; margin-right: 15px;" alt="Job Poster Image"/>
+                                <h6 style="margin: 0; font-size: 18px; font-weight: 600; color: #FFFFFF;"><%= job_Title %></h6>
                             </div>
+
+                            <p class="card-title"><%= job_Title %></p>
+                            <p class="card-description"><%= job_Description %></p>
                         </div>
                     </div>
-                    <%
-                            count++;
-                        }
-                        if (count % 3 != 0) {
-                    %>
-                </ul>
-                <%
-                        }
+                    <% }
                     } catch (Exception e) {
                         e.printStackTrace();
-                    }
-                %>
+                    } %>
+                </div>
             </div>
-
-
         </div>
-
     </div>
-
 </div>
-
-
 </body>
-<%--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" crossorigin="anonymous"--%>
-<%--        referrerpolicy="no-referrer"></script>--%>
-<%--<script src="../../assets/js/alpinejs.min.js"></script>--%>
 </html>

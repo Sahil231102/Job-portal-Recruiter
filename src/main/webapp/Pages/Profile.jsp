@@ -139,7 +139,7 @@
                         <hr>
                         <div class="row">
 
-                            <div class="col-sm-3">
+                            <div style="text-wrap: nowrap " class="col-sm-3">
                                 <h6 class="mb-0">Email</h6>
                             </div>
                             <div class="col-sm-4 text-black-50">
@@ -160,21 +160,21 @@
                             <div class="col-sm-3">
                                 <h6 class="mb-0">Address</h6>
                             </div>
-                            <div class="col-sm-4 text-black-50">
+                            <div style="text-wrap: nowrap " class="col-sm-4 text-black-50">
                                <%=address%>
                             </div>
                         </div>
                         <hr>
-                        <div class="row">
+                        <div style="text-wrap: nowrap "  class="row">
                             <div class="col-sm-3">
                                 <h6 class="mb-0">City</h6>
                             </div>
-                            <div class="col-sm-4 text-black-50">
+                            <div style="text-wrap: nowrap "  class="col-sm-4 text-black-50">
                                <%=city%>
                             </div>
                         </div>
                         <hr>
-                        <div class="row">
+                        <div style="text-wrap: nowrap "  class="row">
                             <div class="col-sm-3">
                                 <h6 class="mb-0">State</h6>
                             </div>
@@ -183,7 +183,7 @@
                             </div>
                         </div>
                         <hr>
-                        <div class="row">
+                        <div style="text-wrap: nowrap "  class="row">
                             <div class="col-sm-3">
                                 <h6 class="mb-0">Country</h6>
                             </div>
@@ -205,13 +205,13 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <!-- This button will open the modal -->
-                                <a class="btn btn-info" data-toggle="modal" data-target="#exampleModal">Edit Profile</a>
+                                <a class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">Edit Profile</a>
                             </div>
                             <div class="col-sm-6">
-                                <a class="btn btn-info" target="__blank" href="">Logout Account</a>
+                                <a class="btn btn-danger" target="__blank" href="">Logout Account</a>
                             </div>
                         </div>
-                        <form enctype="multipart/form-data" method="post" action="./UpdateUserProfileServlet">
+                        <form enctype="multipart/form-data" method="post" action="./profileUpdateServlet">
                             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
@@ -234,7 +234,7 @@
                                         </div>
                                         <div class="modal-body">
                                             <label>Address</label>
-                                            <input type="text" class="form-control" name="address" value="<%=address%>" />
+                                            <input type="text"  style="font-size: 10px" class="form-control" name="address" value="<%=address%>" />
                                         </div>
                                         <div class="modal-body">
                                             <label>City</label>
@@ -254,7 +254,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <!-- Change this button type to submit -->
-                                            <button type="submit" class="btn btn-primary">Save changes</button>
+                                            <button type="submit" class="c">Save changes</button>
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                         </div>
                                     </div>
