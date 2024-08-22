@@ -168,7 +168,7 @@
                     <!-- Modal Body -->
                     <div class="modal-body">
                         <div class="form-group">
-                            <input type="text" name="id" class="form-control" placeholder="ID" value="<%=job_id%>" readonly>
+                            <input type="hidden" name="id" class="form-control" placeholder="ID" value="<%=job_id%>" readonly>
                         </div>
                         <div class="form-group">
                             <input type="text" name="job_Name" class="form-control" placeholder="Job Name" value="<%=Job_Title%>"/>
@@ -259,6 +259,8 @@
         e.printStackTrace();
     }
 %>
-
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
