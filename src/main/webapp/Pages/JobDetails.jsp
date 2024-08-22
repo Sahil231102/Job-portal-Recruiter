@@ -9,6 +9,39 @@
 <html lang="en">
 <head>
     <style>
+
+        /* <select> styles */
+        select {
+            background-color: black;
+            /* Reset */
+            appearance: none;
+            border: 0;
+            outline: 0;
+            font: inherit;
+            /* Personalize */
+            width: 20rem;
+            padding: 1rem 4rem 1rem 1rem;
+            background: var(--arrow-icon) no-repeat right 0.8em center / 1.4em,
+            linear-gradient(to left, var(--arrow-bg) 3em, var(--select-bg) 3em);
+            color: black;
+            border-radius: 0.25em;
+            box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            /* Remove IE arrow */
+            &::-ms-expand {
+                display: none;
+            }
+            /* Remove focus outline */
+            &:focus {
+                outline: none;
+            }
+            /* <option> colors */
+            option {
+                color: inherit;
+                background-color: var(--option-bg);
+            }
+        }
+
         table {
             font-family:'Josefin Sans',sans-serif;
             border-collapse: collapse;
@@ -156,7 +189,7 @@
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateModal">Update</button>
 
     <!-- Update Modal -->
-    <form action="/JobUpdateServlet" method="POST" id="updateform" enctype="multipart/form-data">
+    <form action="JobUpdateServlet" method="POST" id="updateform" enctype="multipart/form-data">
         <div class="modal" id="updateModal">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -168,47 +201,46 @@
                     <!-- Modal Body -->
                     <div class="modal-body">
                         <div class="form-group">
-                            <input type="hidden" name="id" class="form-control" placeholder="ID" value="<%=job_id%>" readonly>
+
+                            <input type="hidden" name="j_id" class="form-control" placeholder="j_id" value="<%=job_id%>" readonly>
                         </div>
+
                         <div class="form-group">
-                            <input type="text" name="job_Name" class="form-control" placeholder="Job Name" value="<%=Job_Title%>"/>
+                            <label >Job Title</label>
+                            <input type="text" name="Job_Title" class="form-control" placeholder="Job Name" value="<%=Job_Title%>"/>
                         </div>
+
                         <div class="form-group">
-                            <input type="text" name="email" class="form-control" placeholder="Employment Type" value="<%=EmploymentType%>"/>
-                        </div>
-                        <div class="form-group">
-                            <input type="tel" name="phone" class="form-control" maxlength="10" placeholder="Phone Number" value=""/>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" name="city" class="form-control" placeholder="City" value=""/>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" name="state" class="form-control" placeholder="State" value=""/>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" name="salary" class="form-control" placeholder="Salary" value=""/>
-                        </div>
-                        <div class="form-group">
-                            <input type="date" name="startDate" class="form-control" placeholder="Start Date" value=""/>
-                        </div>
-                        <div class="form-group">
-                            <input type="date" name="endDate" class="form-control" placeholder="End Date" value=""/>
-                        </div>
-                        <div class="form-group">
-                            <select name="jobType" class="form-control-range">
-                                <option value="">Select Job Type</option>
+                            <label for="pet-select">Employment Type</label>
+                            <select name="EmploymentType" id="pet-select" class="form-control">
+                                <option value="" disabled selected>--Please choose Employment Type--</option>
                                 <option value="Full Time">Full Time</option>
                                 <option value="Part Time">Part Time</option>
                             </select>
                         </div>
+                        <label >MinSalary</label>
                         <div class="form-group">
-                            <input type="text" name="JobAdder" class="form-control" value="<%=Job_Title%>" readonly/>
+                            <input type="number" name="MinSalary" class="form-control" maxlength="10" placeholder="<%=MinSalary%>" value=""/>
                         </div>
+                        <label >Max Salary</label>
                         <div class="form-group">
-                            <textarea name="JobDescription" class="form-control" placeholder="Job Description"></textarea>
+                            <input type="number" name="MaxSalary" class="form-control" placeholder="MaxSalary" value="<%=MaxSalary%>"/>
                         </div>
+                        <label >Job Description</label>
                         <div class="form-group">
-                            <input type="file" name="cimg" class="form-control"/>
+                            <input type="text" name="JobDescription" class="form-control" placeholder="jo" value="<%=jobdes%>"/>
+                        </div>
+                        <label >Benefits</label>
+                        <div class="form-group">
+                            <input type="text" name="Benefits" class="form-control" placeholder="Salary" value="<%=Benefits%>"/>
+                        </div>
+                        <label >Qualification_and_skill </label>
+                        <div class="form-group">
+                            <input type="text" name="Qualification_and_skill" class="form-control" placeholder="Start Date" value="<%=Qualification_and_Skill%>"/>
+                        </div>
+                        <label >Job Title</label>
+                        <div class="form-group">
+                            <input type="file" name="pimg" class="form-control"/>
                         </div>
                     </div>
                     <!-- Modal Footer -->
