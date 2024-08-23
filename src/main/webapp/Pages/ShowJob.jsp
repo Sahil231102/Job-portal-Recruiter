@@ -1,4 +1,4 @@
-<%@ page import="java.sql.Connection" %>
+        <%@ page import="java.sql.Connection" %>
 <%@ page import="DAO.MyDatabase" %>
 <%@ page import="java.sql.PreparedStatement" %>
 <%@ page import="java.sql.Statement" %>
@@ -117,15 +117,37 @@
 
 <div class="grid-container">
     <%
+        Cookie[] cookies = request.getCookies();
+        String R_Email = null;
+
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if ("Vem".equals(cookie.getName())) {
+                    R_Email = cookie.getValue();
+                    break;
+                }
+            }
+        }
+
+
+    %>
+    <%
+        Connection con1 = MyDatabase.getConnection();
+        PreparedStatement psmt1 = con1.prepareStatement("select * from recuruiter where Email=?");
+        psmt1.setString(1, R_Email);
+        ResultSet rs1 = psmt1.executeQuery();
+        String r_id = null;
+        while (rs1.next()) {
+            r_id = rs1.getString("r_id");
+        }
         Connection con = MyDatabase.getConnection();
-        Statement smt = con.createStatement();
+        PreparedStatement psmt = con.prepareStatement("select * from job_add where r_id=?");
+        psmt.setString(1, r_id);
+        ResultSet rs = psmt.executeQuery();
 
-        ResultSet rs = smt.executeQuery("select * from job_add ");
-
-        while (rs.next())
-        {
+        while (rs.next()) {
             String j_id = rs.getString("j_id");
-            String  JobTitle = rs.getString("Job_Title");
+            String JobTitle = rs.getString("Job_Title");
             String EmploymentType = rs.getString("EmploymentType");
             byte[] pimg = rs.getBytes("PosterImg");
             String imgbyte = Base64.getEncoder().encodeToString(pimg);

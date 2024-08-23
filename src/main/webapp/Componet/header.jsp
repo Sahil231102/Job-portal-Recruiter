@@ -68,7 +68,7 @@
                                     <li><a style="text-decoration: none" href=".?pname=ShowAllJob">Show All Job</a> </li>
                                     <li><a style="text-decoration: none" href=".?pname=showJob">Show Job</a></li>
                                     <li><a style="text-decoration: none" href=".?pname=AddJob">Add Job</a></li>
-                                    <li><a style="text-decoration: none" href=".?pname=jobApplyData">Apply</a></li>
+                                    <li><a style="text-decoration: none" href=".?pname=JobApply">Apply</a></li>
 
                                     <li><a style="text-decoration: none" href=".?pname=Contact">Contact</a></li>
                                     <li><a style="text-decoration: none" href=".?pname=About">About</a></li>

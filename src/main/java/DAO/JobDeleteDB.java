@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class JobDeleteDB {
 
     public boolean deleteJob(String id) {
-        String sql = "DELETE FROM `add_job` WHERE Job_id=?";
+        String sql = "DELETE FROM job_add WHERE J_id=?";
         try (Connection con = MyDatabase.getConnection();
              PreparedStatement psmt = con.prepareStatement(sql)) {
 

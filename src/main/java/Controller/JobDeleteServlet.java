@@ -27,10 +27,10 @@ public class JobDeleteServlet extends HttpServlet {
 
             if (deleteJob) {
                 System.out.println("Successfully deleted job");
-                resp.sendRedirect("./?pn=jobDetails");
+                resp.sendRedirect("./?pname=showJob");
             } else {
                 System.out.println("Failed to delete job");
-               resp.sendRedirect("./?pn=jobinfo");
+               resp.sendRedirect("./?pname=showJob");
             }
         } catch (Exception e) {
             e.printStackTrace();
