@@ -43,7 +43,6 @@ public class JobUpdateServlet extends HttpServlet {
 
         // Create JobUpdateModel object
         JobUpdateModel jobUpdateModel = new JobUpdateModel(j_id,Job_Title,EmploymentType,MinSalary,MaxSalary,JobDescription,Benefits,Qualification_and_skill,  newcimgs);
-
         // Update job in the database
         JobUpadateDB jDB = new JobUpadateDB();
         boolean updateJob = jDB.updatejob(jobUpdateModel);
