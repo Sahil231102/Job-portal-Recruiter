@@ -129,6 +129,11 @@
 <%--    <jsp:include page="./Page/job_details.jsp"/>--%>
     <%
             break;
+        case"All_Job_Details":
+            %>
+    <jsp:include page="Pages/All_Job_Details.jsp"/>
+    <%
+        break;
         case"JobApply":
     %>
     <jsp:include page="Pages/Seeker_Job_Apply.jsp"/>

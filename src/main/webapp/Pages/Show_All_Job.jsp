@@ -112,7 +112,7 @@
 <body>
 
 <div class="pd-ltr-20 xs-pd-20-10">
-    <div class="min-height-200px">
+    <div class="min-height-100px">
         <div class="container pd-0">
 
 
@@ -123,6 +123,7 @@
                         Statement st = con.createStatement();
                         ResultSet rs = st.executeQuery("select * from  job_add inner join recuruiter on job_add.r_id = recuruiter.r_id");
                         while (rs.next()) {
+                            String job_id = rs.getString("j_id");
                             String companyname = rs.getString("Company_Name");
                             String job_Title = rs.getString("Job_Title");
                             String job_Description = rs.getString("JobDescripton");
@@ -135,17 +136,19 @@
                             String imgByte = Base64.getEncoder().encodeToString(pimg);
                             String pimgs = "data:image/png;base64," + imgByte;
                     %>
-                    <div class="card">
-                        <div class="container-card bg-blue-box">
-                            <div class="row" style="display: flex; align-items: center; margin-bottom: 20px;">
-                                <img src="<%= pimgs %>" style=" border-radius: 50%; margin-right: 15px;" alt="Job Poster Image"/>
-                                <h6 style="margin: 0; font-size: 18px; font-weight: 600; color: #FFFFFF;"><%=companyname %></h6>
+                    <a href=".?pname=All_Job_Details&j_id=<%=job_id%>" style="text-decoration: none;">
+                        <div class="card">
+                            <div class="container-card bg-blue-box">
+                                <div class="row" style="display: flex; align-items: center; margin-bottom: 20px;">
+                                    <img src="<%= pimgs %>" style="border-radius: 50%; margin-right: 15px;" alt="Job Poster Image"/>
+                                    <h6 style="margin: 0; font-size: 18px; font-weight: 600; color: #FFFFFF;"><%= companyname %></h6>
+                                </div>
+                                <p class="card-title"><%= job_Title %></p>
+                                <p class="card-description"><%= job_Description %></p>
                             </div>
-
-                            <p class="card-title"><%= job_Title %></p>
-                            <p class="card-description"><%= job_Description %></p>
                         </div>
-                    </div>
+                    </a>
+
                     <% }
                     } catch (Exception e) {
                         e.printStackTrace();

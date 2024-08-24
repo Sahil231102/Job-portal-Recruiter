@@ -12,7 +12,181 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html class="no-js" lang="zxx">
+
 <head>
+
+    <style>
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin-right: -15px;
+            margin-left: -15px;
+        }
+
+        .col-xl-3 {
+            flex: 0 0 25%;
+            max-width: 25%;
+            padding-right: 15px;
+            padding-left: 15px;
+        }
+
+        .mb-30 {
+            margin-bottom: 30px;
+        }
+
+        /* Card Styles */
+        /* Card Styles */
+        .card-box {
+            background-color: #ffffff;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .card-box:hover {
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .height-100-p {
+            height: 100%;
+        }
+
+        .widget-style1 {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .d-flex {
+            display: flex;
+        }
+
+        .flex-wrap {
+            flex-wrap: wrap;
+        }
+
+        .align-items-center {
+            align-items: center;
+        }
+
+        /* Widget Data */
+        .widget-data {
+            margin-left: 20px;
+        }
+
+        .widget-data .h4 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .widget-data .weight-600 {
+            font-weight: 600;
+            color: #888;
+            margin-top: 5px;
+        }
+
+        /* Progress Data */
+        .progress-data {
+            flex-shrink: 0;
+        }
+        #chart1 {
+            width: 60px;
+            height: 60px;
+            background-color: #f0f0f0;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Styles for the image inside the chart */
+        #chart1 img {
+            width: 40px; /* Adjust the size as needed */
+            height: 40px;
+            object-fit: contain; /* Ensures the image scales properly within the container */
+        }
+        #chart2 {
+            width: 60px;
+            height: 60px;
+            background-color: #f0f0f0;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Styles for the image inside the chart */
+        #chart2 img {
+            width: 40px; /* Adjust the size as needed */
+            height: 40px;
+            object-fit: contain; /* Ensures the image scales properly within the container */
+        }
+        #chart3 {
+            width: 60px;
+            height: 60px;
+            background-color: #f0f0f0;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Styles for the image inside the chart */
+        #char3 img {
+            width: 40px; /* Adjust the size as needed */
+            height: 40px;
+            object-fit: contain; /* Ensures the image scales properly within the container */
+        }
+
+        #chart4 {
+            width: 60px;
+            height: 60px;
+            background-color: #f0f0f0;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Styles for the image inside the chart */
+        #chart4 img {
+            width: 40px; /* Adjust the size as needed */
+            height: 40px;
+            object-fit: contain; /* Ensures the image scales properly within the container */
+        }
+
+        @media (max-width: 1200px) {
+            .col-xl-3 {
+                flex: 0 0 50%;
+                max-width: 50%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .col-xl-3 {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+            .widget-data {
+                margin-left: 10px;
+            }
+        }
+
+
+    </style>
 
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
     <meta charset="utf-8">
@@ -46,6 +220,70 @@
 <!-- Preloader Start -->
 
 <main>
+    <div style="padding: 20px">
+        <div class="row">
+            <div class="col-xl-3 mb-30">
+                <div class="card-box height-100-p widget-style1">
+                    <div class="d-flex flex-wrap align-items-center">
+                        <div class="progress-data">
+                            <div id="chart1">
+
+                                <img src="./RecruiterStyle/assets/icons/job.png" style="height: 30px">
+                            </div>
+                        </div>
+                        <div class="widget-data">
+                            <div class="h4 mb-0">1</div>
+                            <div class="weight-600 font-14">Number Of Job</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 mb-30">
+                <div class="card-box height-100-p widget-style1">
+                    <div class="d-flex flex-wrap align-items-center">
+                        <div class="progress-data">
+                            <div id="chart2">
+                                <img src="./RecruiterStyle/assets/icons/job-offer.png" style="height: 30px">
+                            </div>
+                        </div>
+                        <div class="widget-data">
+                            <div class="h4 mb-0">5</div>
+                            <div class="weight-600 font-14">Number Of Apply</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 mb-30">
+                <div class="card-box height-100-p widget-style1">
+                    <div class="d-flex flex-wrap align-items-center">
+                        <div class="progress-data">
+                            <div id="chart3">
+                                <img src="./RecruiterStyle/assets/icons/clock.png" style="height: 30px">
+                            </div>
+                        </div>
+                        <div class="widget-data">
+                            <div class="h4 mb-0">5</div>
+                            <div class="weight-600 font-14" style="color: red"> Apply Pending</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 mb-30">
+                <div class="card-box height-100-p widget-style1">
+                    <div class="d-flex flex-wrap align-items-center">
+                        <div class="progress-data">
+
+                            <div id="chart4"> <img src="./RecruiterStyle/assets/img/Check_Icon/check-mark.png" style="height: 30px"></div>
+                        </div>
+                        <div class="widget-data">
+                            <div class="h4 mb-0">1</div>
+                            <div class="weight-600 font-14" style="color: forestgreen">Apply Approve</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- slider Area Start-->
     <div class="slider-area ">

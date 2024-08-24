@@ -209,8 +209,24 @@
                         <div class="job-tittle">
                             <a style="text-decoration: none" href="job_details.html"><h4><%=Fname%> <%=Lname%></h4></a>
                             <ul style="padding-left: 0px">
-                                <li ><%=Gender%></li>
-                                <li><%=jobDate%></li>
+                                <li style="margin-right: 0px">Job Status:</li>
+                               <%
+                                   if("Panding".equals(JobStatus))
+                                   {
+
+                               %>
+                                <li style="color: red;"><%=JobStatus%></li>
+                                <%
+                                    }
+                                   else
+                                    {
+
+
+                                %>
+                                <li style="color: forestgreen;"><%=JobStatus%></li>
+                                <%
+                                    }
+                                %>
 
                             </ul>
                         </div>

@@ -114,7 +114,7 @@
 <body>
 
 <%
-    String id = request.getParameter("a_id");
+    String id = request.getParameter("j_id");
 
     if(id == null || id.isEmpty()) {
         id = "1";
@@ -123,54 +123,78 @@
 <%
     try {
         Connection con = MyDatabase.getConnection();
-        PreparedStatement psmt = con.prepareStatement("SELECT * FROM job_apply inner join seeker on seeker.s_id=job_apply.s_id   inner join job_add on job_apply.j_id = job_add.j_id  WHERE a_id = ?");
+        PreparedStatement psmt = con.prepareStatement("SELECT * FROM job_add inner join recuruiter on job_add.r_id = recuruiter.r_id  WHERE j_id = ?");
         psmt.setString(1, id);
         ResultSet rs = psmt.executeQuery();
         if (rs.next()) {
-            int a_id = rs.getInt("a_id");
+            int job_id = rs.getInt("j_id");
+            String CompanyName =rs.getString("Company_Name");
             String Job_Title = rs.getString("Job_Title");
-            String fname = rs.getString("fname");
-            String lname = rs.getString("lname");
-            String status = rs.getString("JobStatus");
-            String Gender = rs.getString("Gender");
-            String JobApplyDate = rs.getString("JobApplyDate");
-            byte[] simg = rs.getBytes("simg");
-            String imgByte = Base64.getEncoder().encodeToString(simg);
-            String simgs = "data:image/png;base64," + imgByte;
+            String EmploymentType = rs.getString("EmploymentType");
+            String MinSalary = rs.getString("Minsalary");
+            String MaxSalary = rs.getString("Maxsalary");
+            String jobdes = rs.getString("JobDescripton");
+            String Qualification_and_Skill = rs.getString("Qualification_and_Skill");
+            String Benefits = rs.getString("Benefits");
+            String AddDate = rs.getString("JobAddDate");
+            byte[] cimg = rs.getBytes("Cimg");
+            String imgByte = Base64.getEncoder().encodeToString(cimg);
+            String cimgs = "data:image/png;base64," + imgByte;
+            byte[] pimg = rs.getBytes("PosterImg");
+            String imgByte1 = Base64.getEncoder().encodeToString(pimg);
+            String pimgs = "data:image/png;base64," + imgByte1;
 %>
 <div class="container">
     <section class="job-details">
         <div class="job-card">
             <table>
                 <tr>
-                    <th colspan="2" style="text-align: center;font-weight: bold;font-size: 25px;color: #0c5460">Apply Seeker Information</th>
+                    <th colspan="2" style="text-align: center;font-weight: bold;font-size: 25px;color: #0c5460">Job Information</th>
                 </tr>
                 <tr>
-                    <td colspan="2" style="text-align: center">
-                        <img src="<%=simgs%>" alt="Avatar" style="width:200px;height: 200px; object-fit: cover;border-radius:10%;">
+                    <td colspan="2" style="text-align: start; display: flex; align-items: center;">
+                        <img src="<%=cimgs%>" alt="Avatar" style="width:50px; height:50px; object-fit: cover; border-radius:50%; margin-right: 10px;">
+                        <h3 style="margin: 0; font-size: 18px; font-weight: bold"><%=CompanyName%></h3>
+                    </td>
+                    <td>
+
                     </td>
                 </tr>
+
+                <tr>
+                    <td colspan="2" style="text-align: center">
+                        <img src="<%=pimgs%>" alt="Avatar" style="width:500px;object-fit: cover; border-radius:10%;">
+                    </td>
+                </tr>
+
                 <tr>
                     <td>Job Title</td>
                     <td><%=Job_Title%></td>
                 </tr>
                 <tr>
-                    <td>Seeker Name:</td>
-                    <td><%=fname%> <%=lname%></td>
+                    <td>Employment Type</td>
+                    <td><%=EmploymentType%></td>
                 </tr>
                 <tr>
-                    <td>Gender:</td>
-                    <td><%=Gender%></td>
+                    <td>Salary</td>
+                    <td><%=MinSalary%> - <%=MaxSalary%></td>
                 </tr>
                 <tr>
-                    <td>Job Apply Date:</td>
-                    <td><%=JobApplyDate%></td>
+                    <td>Description</td>
+                    <td><%=jobdes%></td>
                 </tr>
                 <tr>
-                    <td>Job Status:</td>
-                    <td><%=status%></td>
+                    <td>Benefits</td>
+                    <td><%=Benefits%></td>
                 </tr>
-
+                <tr>
+                    <td>Qualification and Skill</td>
+                    <td><%=Qualification_and_Skill%></td>
+                </tr>
+                <tr>
+                    <td>Add Date</td>
+                    <td><%=AddDate%></td>
+                </tr>
             </table>
         </div>
     </section>
@@ -179,36 +203,8 @@
 <div class="row" style="display: flex; justify-content: space-around; padding: 30px;">
 
 
-    <button type="button" class=" btn-success" data-toggle="modal" data-target="#deleteModal">Approve Job</button>
-
-    <!-- Delete Modal -->
-    <form action="ApplyStatusServlet" method="POST" id="deleteForm">
-        <div class="modal" id="deleteModal">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <!-- Modal Header -->
-                    <div class="modal-header">
-                        <h4 class="modal-title">Approve Job</h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-                    <!-- Modal Body -->
-                    <div class="modal-body">
-                        <h6 style="color: #cb4b16">Are You Sure You Want to Approve This Job?</h6>
-                    </div>
-                    <!-- Modal Footer -->
-                    <div class="modal-footer">
-                        <input type="hidden" name="a_id" value="<%=a_id%>">
-                        <input type="hidden" name="status" value="Approve">
-                        <button type="submit" class="btn btn-primary">Yes</button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
-
-    <button class="btn btn-outline-dark" type="submit" id="buttonback" name="back">
-        <a href="./?pname=JobApply">Back</a>
+    <button class="btn btn-outline-dark"  type="submit" id="buttonback" name="back">
+        <a   style="color: white" href="./?pname=ShowAllJob">Back</a>
     </button>
 </div>
 
