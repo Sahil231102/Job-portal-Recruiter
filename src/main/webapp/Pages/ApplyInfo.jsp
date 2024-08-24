@@ -127,7 +127,7 @@
         psmt.setString(1, id);
         ResultSet rs = psmt.executeQuery();
         if (rs.next()) {
-            int job_id = rs.getInt("a_id");
+            int a_id = rs.getInt("a_id");
             String Job_Title = rs.getString("Job_Title");
             String fname = rs.getString("fname");
             String lname = rs.getString("lname");
@@ -177,77 +177,12 @@
 </div>
 
 <div class="row" style="display: flex; justify-content: space-around; padding: 30px;">
-<%--    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateModal">Update</button>--%>
 
-<%--    <!-- Update Modal -->--%>
-<%--    <form action="JobUpdateServlet" method="POST" id="updateform" enctype="multipart/form-data">--%>
-<%--        <div class="modal" id="updateModal">--%>
-<%--            <div class="modal-dialog">--%>
-<%--                <div class="modal-content">--%>
-<%--                    <!-- Modal Header -->--%>
-<%--                    <div class="modal-header">--%>
-<%--                        <h4 class="modal-title">Update Job</h4>--%>
-<%--                        <button type="button" class="close" data-dismiss="modal">&times;</button>--%>
-<%--                    </div>--%>
-<%--                    <!-- Modal Body -->--%>
-<%--                    <div class="modal-body">--%>
-<%--                        <div class="form-group">--%>
-
-<%--                            <input type="hidden" name="j_id" class="form-control" placeholder="j_id" value="<%=job_id%>" readonly>--%>
-<%--                        </div>--%>
-
-<%--                        <div class="form-group">--%>
-<%--                            <label >Job Title</label>--%>
-<%--                            <input type="text" name="Job_Title" class="form-control" placeholder="Job Name" value="<%=Job_Title%>"/>--%>
-<%--                        </div>--%>
-
-<%--                        <div class="form-group">--%>
-<%--                            <label for="pet-select">Employment Type</label>--%>
-<%--                            <select name="EmploymentType" id="pet-select" class="form-control">--%>
-<%--                                <option value="" disabled selected>--Please choose Employment Type--</option>--%>
-<%--                                <option value="Full Time">Full Time</option>--%>
-<%--                                <option value="Part Time">Part Time</option>--%>
-<%--                            </select>--%>
-<%--                        </div>--%>
-<%--                        <label >MinSalary</label>--%>
-<%--                        <div class="form-group">--%>
-<%--                            <input type="number" name="MinSalary" class="form-control" maxlength="10" placeholder="<%=MinSalary%>" value=""/>--%>
-<%--                        </div>--%>
-<%--                        <label >Max Salary</label>--%>
-<%--                        <div class="form-group">--%>
-<%--                            <input type="number" name="MaxSalary" class="form-control" placeholder="MaxSalary" value="<%=MaxSalary%>"/>--%>
-<%--                        </div>--%>
-<%--                        <label >Job Description</label>--%>
-<%--                        <div class="form-group">--%>
-<%--                            <input type="text" name="JobDescription" class="form-control" placeholder="jo" value="<%=jobdes%>"/>--%>
-<%--                        </div>--%>
-<%--                        <label >Benefits</label>--%>
-<%--                        <div class="form-group">--%>
-<%--                            <input type="text" name="Benefits" class="form-control" placeholder="Salary" value="<%=Benefits%>"/>--%>
-<%--                        </div>--%>
-<%--                        <label >Qualification_and_skill </label>--%>
-<%--                        <div class="form-group">--%>
-<%--                            <input type="text" name="Qualification_and_skill" class="form-control" placeholder="Start Date" value="<%=Qualification_and_Skill%>"/>--%>
-<%--                        </div>--%>
-<%--                        <label >Job Title</label>--%>
-<%--                        <div class="form-group">--%>
-<%--                            <input type="file" name="pimg" class="form-control"/>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                    <!-- Modal Footer -->--%>
-<%--                    <div class="modal-footer">--%>
-<%--                        <button type="submit" class="btn btn-primary">Update</button>--%>
-<%--                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--    </form>--%>
 
     <button type="button" class=" btn-success" data-toggle="modal" data-target="#deleteModal">Approve Job</button>
 
     <!-- Delete Modal -->
-    <form action="ApplyStatusServlet" method="POST" enctype="multipart/form-data" id="deleteForm">
+    <form action="ApplyStatusServlet" method="POST" id="deleteForm">
         <div class="modal" id="deleteModal">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -262,7 +197,7 @@
                     </div>
                     <!-- Modal Footer -->
                     <div class="modal-footer">
-                        <input type="hidden" name="id" value="<%=id%>">
+                        <input type="hidden" name="a_id" value="<%=a_id%>">
                         <input type="hidden" name="status" value="Approve">
                         <button type="submit" class="btn btn-primary">Yes</button>
                         <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>

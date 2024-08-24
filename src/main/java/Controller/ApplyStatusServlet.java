@@ -7,17 +7,21 @@ import Model.JobDeleteModel;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+@WebServlet(name = "ApplyStatusServlet",value = "/ApplyStatusServlet")
+@MultipartConfig
 public class ApplyStatusServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
-            String id = req.getParameter("id");
+            String id = req.getParameter("a_id");
             String status = req.getParameter("status");
 
             ApplyStatusModel UpdateStatusModel = new ApplyStatusModel(id,status);
