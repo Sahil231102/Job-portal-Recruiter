@@ -62,4 +62,36 @@
 </div>
 
 </body>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 5000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer);
+                toast.addEventListener('mouseleave', Swal.resumeTimer);
+            }
+        });
+
+        // Check for URL parameter indicating success (e.g., ?success=true)
+        const urlParams = new URLSearchParams(window.location.search);
+        const successParam = urlParams.get('s');
+
+        if (successParam && successParam === 'signUp') {
+            // Display success toast
+            Toast.fire({
+                icon: 'success',
+                title: 'SingUp Successfully!'
+            });
+            urlParams.delete('s');
+            const newUrl = `./RecruiterLogin.jsp`;
+            window.history.replaceState({}, document.title, newUrl);
+        }
+    });
+</script>
 </html>

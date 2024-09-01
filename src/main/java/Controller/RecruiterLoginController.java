@@ -43,7 +43,7 @@ public class RecruiterLoginController extends HttpServlet {
 
             resp.addCookie(Vem);
 
-            resp.sendRedirect(req.getContextPath() + "/?pname=Home");
+            resp.sendRedirect(req.getContextPath() + "/?pname=Home&s=login");
         }
         else {
             out.println("<script>alert('incorrect phone number and password Please Enter Valid')</script>");

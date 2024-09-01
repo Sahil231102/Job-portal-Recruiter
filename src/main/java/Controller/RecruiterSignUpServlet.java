@@ -46,7 +46,7 @@ public class RecruiterSignUpServlet extends HttpServlet {
 
             if(SignUpData)
             {
-                response.sendRedirect("RecruiterLogin.jsp");
+                response.sendRedirect(request.getContextPath() + "/RecruiterLogin.jsp?s=signUp");
             }
             else
             {
