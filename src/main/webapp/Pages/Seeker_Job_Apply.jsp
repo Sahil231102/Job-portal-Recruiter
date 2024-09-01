@@ -211,7 +211,7 @@
                             <ul style="padding-left: 0px">
                                 <li style="margin-right: 0px">Job Status:</li>
                                <%
-                                   if("Panding".equals(JobStatus))
+                                   if("Pending".equals(JobStatus))
                                    {
 
                                %>
