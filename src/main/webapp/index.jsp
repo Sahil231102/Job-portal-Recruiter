@@ -206,6 +206,56 @@
             const newUrl = `./?pname=Home`;
             window.history.replaceState({}, document.title, newUrl);
         }
+        else if (successParam && successParam === 'AddJOB') {
+            // Display success toast
+            Toast.fire({
+                icon: 'success',
+                title: 'Add Job successfully!'
+            });
+            urlParams.delete('s');
+            const newUrl = `./?pname=AJ`;
+            window.history.replaceState({}, document.title, newUrl);
+        }
+        else if (successParam && successParam === 'NOTAddJOB') {
+            // Display success toast
+            Toast.fire({
+                icon: 'error',
+                title: 'Not Add successfully!'
+            });
+            urlParams.delete('s');
+            const newUrl = `./?pname=AJ`;
+            window.history.replaceState({}, document.title, newUrl);
+        }
+        else if (successParam && successParam === 'changeStatus') {
+            // Display success toast
+            Toast.fire({
+                icon: 'success',
+                title: 'Approve Seeker successfully!'
+            });
+            urlParams.delete('s');
+            const newUrl = `./?pname=JobApply`;
+            window.history.replaceState({}, document.title, newUrl);
+        }
+        else if (successParam && successParam === 'RecruiterProfile') {
+            // Display success toast
+            Toast.fire({
+                icon: 'success',
+                title: 'Profile Update successfully!'
+            });
+            urlParams.delete('s');
+            const newUrl = `./?pname=userProfile`;
+            window.history.replaceState({}, document.title, newUrl);
+        }
+        else if (successParam && successParam === 'NotRecruiterProfile') {
+            // Display success toast
+            Toast.fire({
+                icon: 'success',
+                title: 'Not Profile Update successfully!'
+            });
+            urlParams.delete('s');
+            const newUrl = `./?pname=userProfile`;
+            window.history.replaceState({}, document.title, newUrl);
+        }
     });
 </script>
 

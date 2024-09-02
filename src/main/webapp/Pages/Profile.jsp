@@ -142,7 +142,7 @@
                             <div style="text-wrap: nowrap " class="col-sm-3">
                                 <h6 class="mb-0">Email</h6>
                             </div>
-                            <div class="col-sm-4 text-black-50">
+                            <div class="col-sm-4 text-black-50" style="text-wrap: nowrap">
                                 <%=email%>
                             </div>
                         </div>
@@ -234,7 +234,7 @@
                                         </div>
                                         <div class="modal-body">
                                             <label>Address</label>
-                                            <input type="text"  style="font-size: 10px" class="form-control" name="address" value="<%=address%>" />
+                                            <input type="text"  class="form-control" name="address" value="<%=address%>" />
                                         </div>
                                         <div class="modal-body">
                                             <label>City</label>
@@ -254,7 +254,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <!-- Change this button type to submit -->
-                                            <button type="submit" class="c">Save changes</button>
+                                            <button type="button" class="btn btn-primary">Save changes</button>
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                         </div>
                                     </div>

@@ -51,12 +51,12 @@ public class profileUpdateServlet extends HttpServlet {
             if(updateData)
             {
                 System.out.println();
-                resp.sendRedirect(".?pname=userProfile");
+                resp.sendRedirect(".?pname=userProfile&s=RecruiterProfile");
             }
             else
             {
                 System.out.println("Error");
-                resp.sendRedirect(".?pname=userProfile");
+                resp.sendRedirect(".?pname=userProfile&s=NotRecruiterProfile");
             }
         }
         catch (Exception e)

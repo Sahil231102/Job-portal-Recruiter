@@ -56,11 +56,11 @@ public class AddJobServlet extends HttpServlet {
 
         System.out.println(insert);
         if (insert) {
-            resp.sendRedirect("./?pn=AJ");
+            resp.sendRedirect("./?pn=AJ&s=AddJOB");
         }
         else
         {
-            resp.sendRedirect("./?pn=AJ");
+            resp.sendRedirect("./?pn=AJ&s=NOTAddJOB");
 
         }
 

@@ -30,7 +30,7 @@ public class ApplyStatusServlet extends HttpServlet {
 
             if (statuschange) {
                 System.out.println("Successfully deleted job");
-                resp.sendRedirect("./?pname=JobApply");
+                resp.sendRedirect("./?pname=JobApply&s=changeStatus");
             } else {
                 System.out.println("Failed to delete job");
                 resp.sendRedirect("./?pname=JobApply");
