@@ -153,6 +153,11 @@
     %>
     <jsp:include page="Pages/JobDetails.jsp"/>
     <%
+        break;
+        case"About":
+    %>
+    <jsp:include page="Pages/AboutUs.jsp"/>
+    <%
             break;
         case "ShowAllJob":
     %>
