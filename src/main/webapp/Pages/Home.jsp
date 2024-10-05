@@ -1,8 +1,6 @@
-<%@ page import="java.sql.Connection" %>
 <%@ page import="DAO.MyDatabase" %>
-<%@ page import="java.sql.PreparedStatement" %>
-<%@ page import="java.sql.ResultSet" %>
-<%@ page import="java.util.Base64" %><%--
+<%@ page import="java.util.Base64" %>
+<%@ page import="java.sql.*" %><%--
   Created by IntelliJ IDEA.
   User: DELL
   Date: 20-05-2024
@@ -201,6 +199,35 @@
 </head>
 
 <body>
+<%
+    Cookie[] cookies = request.getCookies();
+    String R_Email = null;
+
+    if (cookies != null) {
+        for (Cookie cookie : cookies) {
+            if ("Vem".equals(cookie.getName())) {
+                R_Email = cookie.getValue();
+                break;
+            }
+        }
+    }
+try
+{
+
+        Connection con = MyDatabase.getConnection();
+        PreparedStatement psmt = con.prepareStatement("select * from recuruiter where Email=?");
+        psmt.setString(1,R_Email);
+        ResultSet rs = psmt.executeQuery();
+
+        if(rs.next()) {
+            String rid = rs.getString("r_id");
+
+
+
+
+
+%>
+
 <!-- Preloader Start -->
 <%--<div class="pre-loader">--%>
 <%--    <div class="pre-loader-box">--%>
@@ -232,8 +259,39 @@
                             </div>
                         </div>
                         <div class="widget-data">
-                            <div class="h4 mb-0">1</div>
-                            <div class="weight-600 font-14">Number Of Job</div>
+                            <div class="widget-data" style="place-items: center">
+                                <%
+
+try
+{
+
+                                        Connection con1 = MyDatabase.getConnection();
+                                        PreparedStatement psmt1 = con1.prepareStatement("select count(j_id) from job_add where r_id=?");
+                                        psmt1.setString(1,rid);
+                                        ResultSet rs1 = psmt1.executeQuery();
+
+                                        if(rs1.next())
+                                        {
+                                            String RecruiterNo = rs1.getString(1);
+
+
+
+
+                                %>
+
+
+                                <div class="h4 mb-0"><%=RecruiterNo%></div>
+                                <div class="weight-600 font-14">Jobs</div> <%
+                                        }
+
+                                }
+catch (Exception e)
+{
+    e.printStackTrace();
+}
+                            %>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -247,8 +305,39 @@
                             </div>
                         </div>
                         <div class="widget-data">
-                            <div class="h4 mb-0">5</div>
-                            <div class="weight-600 font-14">Number Of Apply</div>
+                            <div class="widget-data" style="place-items: center">
+                                <%
+
+                                    try
+                                    {
+
+                                        Connection con1 = MyDatabase.getConnection();
+                                        PreparedStatement psmt1 = con1.prepareStatement("select count(a_id) from job_apply where r_id=?");
+                                        psmt1.setString(1,rid);
+                                        ResultSet rs1 = psmt1.executeQuery();
+
+                                        if(rs1.next())
+                                        {
+                                            String ApplyNo = rs1.getString(1);
+
+
+
+
+                                %>
+
+
+                                <div class="h4 mb-0"><%=ApplyNo%></div>
+                                <div class="weight-600 font-14"> Seeker Job Apply</div> <%
+                                    }
+
+                                }
+                                catch (Exception e)
+                                {
+                                    e.printStackTrace();
+                                }
+                            %>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -262,8 +351,39 @@
                             </div>
                         </div>
                         <div class="widget-data">
-                            <div class="h4 mb-0">5</div>
-                            <div class="weight-600 font-14" style="color: red"> Apply Pending</div>
+                            <div class="widget-data" style="place-items: center">
+                                <%
+
+                                    try
+                                    {
+
+                                        Connection con1 = MyDatabase.getConnection();
+                                        PreparedStatement psmt1 = con1.prepareStatement("select count(a_id) from job_apply where r_id=? And JobStatus='Pending'");
+                                        psmt1.setString(1,rid);
+                                        ResultSet rs1 = psmt1.executeQuery();
+
+                                        if(rs1.next())
+                                        {
+                                            String PendingNo = rs1.getString(1);
+
+
+
+
+                                %>
+
+
+                                <div class="h4 mb-0"><%=PendingNo%></div>
+                                <div class="weight-600 font-14" style="color: #992637">Apply Pending</div> <%
+                                    }
+
+                                }
+                                catch (Exception e)
+                                {
+                                    e.printStackTrace();
+                                }
+                            %>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -276,8 +396,39 @@
                             <div id="chart4"> <img src="./RecruiterStyle/assets/img/Check_Icon/check-mark.png" style="height: 30px"></div>
                         </div>
                         <div class="widget-data">
-                            <div class="h4 mb-0">1</div>
-                            <div class="weight-600 font-14" style="color: forestgreen">Apply Approve</div>
+                            <div class="widget-data" style="place-items: center">
+                                <%
+
+                                    try
+                                    {
+
+                                        Connection con1 = MyDatabase.getConnection();
+                                        PreparedStatement psmt1 = con1.prepareStatement("select count(a_id) from job_apply where r_id=? And JobStatus='Approve'");
+                                        psmt1.setString(1,rid);
+                                        ResultSet rs1 = psmt1.executeQuery();
+
+                                        if(rs1.next())
+                                        {
+                                            String ApproveNo = rs1.getString(1);
+
+
+
+
+                                %>
+
+
+                                <div class="h4 mb-0"><%=ApproveNo%></div>
+                                <div class="weight-600 font-14" style="color: #009045">Apply Approve</div> <%
+                                    }
+
+                                }
+                                catch (Exception e)
+                                {
+                                    e.printStackTrace();
+                                }
+                            %>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -357,8 +508,24 @@
 
 
 
-
 </main>
+
+
+
+<!-- JS here -->
+
+<!-- All JS Custom Plugins Link Here here -->
+<%
+
+    }
+    }
+
+    catch (Exception e)
+    {
+        e.printStackTrace();
+    }
+%>
+</body>
 <script>
     window.addEventListener('load', function () {
         var loader = document.querySelector('.pre-loader');
@@ -384,11 +551,4 @@
         updateProgress();
     });
 </script>
-
-
-<!-- JS here -->
-
-<!-- All JS Custom Plugins Link Here here -->
-
-</body>
 </html>

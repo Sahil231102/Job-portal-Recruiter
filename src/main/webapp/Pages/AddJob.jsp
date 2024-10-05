@@ -115,6 +115,20 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div style="padding: 0px" class="container">
+                                        <label>Fields:</label>
+                                        <div class="select">
+                                            <select name="EmploymentType" class="form-control" required>
+                                                <option value="">Select Job Fields</option>
+                                                <option value="Full Time">Information technology</option>
+                                                <option value="Part Time">Part Time</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
                         </div>
                         <div class="row">

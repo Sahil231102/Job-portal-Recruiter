@@ -222,19 +222,19 @@
                                             </button>
                                         </div>
 
-                                            <input type="hidden" class="form-control" name="id" value="<%=rid%>" readonly />
+                                        <input type="hidden" class="form-control" name="id" value="<%=rid%>" readonly />
 
                                         <div class="modal-body">
                                             <label>Company name</label>
                                             <input type="text" class="form-control" name="company_name" value="<%=cname%>" />
                                         </div>
                                         <div class="modal-body">
-                                            <label>phone Number</label>
+                                            <label>Phone Number</label>
                                             <input type="tel" maxlength="10" class="form-control" name="phone" value="<%=phone%>" />
                                         </div>
                                         <div class="modal-body">
                                             <label>Address</label>
-                                            <input type="text"  class="form-control" name="address" value="<%=address%>" />
+                                            <input type="text" class="form-control" name="address" value="<%=address%>" />
                                         </div>
                                         <div class="modal-body">
                                             <label>City</label>
@@ -253,14 +253,15 @@
                                             <input type="file" class="form-control" name="updateimg" value="" />
                                         </div>
                                         <div class="modal-footer">
-                                            <!-- Change this button type to submit -->
-                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                            <!-- Corrected button type to submit -->
+                                            <button type="submit" class="btn btn-primary">Save changes</button>
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </form>
+
 
                     </div>
                 </div>

@@ -199,8 +199,8 @@
                     <div class="modal-footer">
                         <input type="hidden" name="a_id" value="<%=a_id%>">
                         <input type="hidden" name="status" value="Approve">
-                        <button type="submit" class="btn btn-primary">Yes</button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                        <button type="submit" class="btn btn-primary" style="background-color: green">Approve</button>
+                        <button type="button" class="btn btn-danger" style="background-color: red" data-dismiss="modal">Reject</button>
                     </div>
                 </div>
             </div>
