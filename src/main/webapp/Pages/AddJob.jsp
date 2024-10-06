@@ -122,8 +122,8 @@
                                         <div class="select">
                                             <select name="EmploymentType" class="form-control" required>
                                                 <option value="">Select Job Fields</option>
-                                                <option value="Full Time">Information technology</option>
-                                                <option value="Part Time">Part Time</option>
+                                                <option value="Information technology">Information technology</option>
+                                                <option value=""></option>
                                             </select>
                                         </div>
                                     </div>
