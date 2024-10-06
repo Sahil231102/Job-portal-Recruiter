@@ -28,6 +28,42 @@
         }
     </style>
 </head>
+<script>
+    function updateJobTitleOptions() {
+        var jobField = document.getElementById("jobField").value;
+        var jobTitleSelect = document.getElementById("jobTitle");
+
+        // Clear previous options
+        jobTitleSelect.innerHTML = "";
+
+        // Job Titles for each field
+        var jobTitles = {
+            "Technology and IT": ["Software Engineer", "Data Scientist", "IT Support"],
+            "Engineering": ["Mechanical Engineer", "Civil Engineer", "Electrical Engineer"],
+            "Business and Finance": ["Accountant", "Financial Analyst", "HR Manager"],
+            "Healthcare and Medicine": ["Doctor", "Nurse", "Pharmacist"],
+            "Education": ["Teacher", "Educational Consultant", "Curriculum Developer"],
+            "Marketing and Advertising": ["Digital Marketer", "SEO Specialist", "PR Manager"],
+            "Sales and Retail": ["Sales Representative", "Retail Manager", "Account Executive"]
+        };
+
+        // Add "Select Job Title" as the default option
+        var defaultOption = document.createElement("option");
+        defaultOption.value = "";
+        defaultOption.text = "Select Job Title";
+        jobTitleSelect.appendChild(defaultOption);
+
+        // Get job titles for the selected field
+        if (jobTitles[jobField]) {
+            jobTitles[jobField].forEach(function(title) {
+                var option = document.createElement("option");
+                option.value = title;
+                option.text = title;
+                jobTitleSelect.appendChild(option);
+            });
+        }
+    }
+</script>
 <body>
 <%
     Cookie[] cookies = request.getCookies();
@@ -70,8 +106,10 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Job Title :</label>
-                                    <input type="text" name="jobTitle" class="form-control" required/>
+                                    <label>Job Title:</label>
+                                    <select name="jobTitle" id="jobTitle" class="form-control" required>
+                                        <option value="">Select Job Title</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -120,10 +158,15 @@
                                     <div style="padding: 0px" class="container">
                                         <label>Fields:</label>
                                         <div class="select">
-                                            <select name="EmploymentType" class="form-control" required>
+                                            <select name="EmploymentType" id="jobField" class="form-control" required onchange="updateJobTitleOptions()">
                                                 <option value="">Select Job Fields</option>
-                                                <option value="Information technology">Information technology</option>
-                                                <option value=""></option>
+                                                <option value="Technology and IT">Technology and IT</option>
+                                                <option value="Engineering">Engineering</option>
+                                                <option value="Business and Finance">Business and Finance</option>
+                                                <option value="Healthcare and Medicine">Healthcare and Medicine</option>
+                                                <option value="Education">Education</option>
+                                                <option value="Marketing and Advertising">Marketing and Advertising</option>
+                                                <option value="Sales and Retail">Sales and Retail</option>
                                             </select>
                                         </div>
                                     </div>
