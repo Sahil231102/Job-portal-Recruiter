@@ -3,19 +3,19 @@ package Model;
 public class AddJobData {
     private String r_id;
     private String jobTitle;
+    private String Job_Categories;
     private String minsalary;
     private String maxsalary;
     private String EmploymentType;
     private String jobdesc;
     private String Qualificaton_skill;
     private String Benefites;
-
-
     private byte[] Hpimg;
 
-    public AddJobData(String rId, String jobTitle, String employmentType, String minsalary, String maxsalary, String jobdesc, String qualificationSkill, String benefits, byte[] posterimg) {
+    public AddJobData(String rId, String jobTitle, String JobCategories,String employmentType, String minsalary, String maxsalary, String jobdesc, String qualificationSkill, String benefits, byte[] posterimg) {
         this.r_id=rId;
         this.jobTitle = jobTitle;
+        this.Job_Categories = JobCategories;
         this.minsalary = minsalary;
         this.maxsalary = maxsalary;
         this.EmploymentType = employmentType;
@@ -27,6 +27,14 @@ public class AddJobData {
 
     // Getters and Setters
 
+
+    public String getJob_Categories() {
+        return Job_Categories;
+    }
+
+    public void setJob_Categories(String job_Categories) {
+        Job_Categories = job_Categories;
+    }
 
     public String getR_id() {
         return r_id;

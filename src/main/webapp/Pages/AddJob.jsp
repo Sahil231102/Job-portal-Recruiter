@@ -93,17 +93,35 @@
             String id = rs.getString("r_id");
 
 %>
-<div class="pd-ltr-20 xs-pd-20-10" style="display: flex; justify-content: center;">
-    <div class="max-width-1000" style="width: 100%; max-width: 1000px;">
+<div class="pd-ltr-20 xs-pd-20-10" style="display: flex; justify-content: center; align-items: center;">
+
+    <div class="max-width-1000" style=" max-width: 1000px;">
         <div class="pd-20 card-box mb-30">
-            <div class="clearfix">
-                <h4 class="text-blue h4">Add Jobs</h4>
-            </div>
+
             <div class="wizard-content">
                 <form id="jobForm" action="AddJobServlet" method="post" enctype="multipart/form-data">
                     <section>
                         <input type="hidden" value="<%=id%>" name="r_id">
                         <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div style="padding: 0px" class="container">
+                                        <label>Job Categories:</label>
+                                        <div class="select">
+                                            <select name="JobCategories" id="jobField" class="form-control" required onchange="updateJobTitleOptions()">
+                                                <option value="">Select Job Categories</option>
+                                                <option value="Technology and IT">Technology and IT</option>
+                                                <option value="Engineering">Engineering</option>
+                                                <option value="Business and Finance">Business and Finance</option>
+                                                <option value="Healthcare and Medicine">Healthcare and Medicine</option>
+                                                <option value="Education">Education</option>
+                                                <option value="Marketing and Advertising">Marketing and Advertising</option>
+                                                <option value="Sales and Retail">Sales and Retail</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Job Title:</label>
@@ -112,20 +130,8 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <div style="padding: 0px" class="container">
-                                        <label>Employment Type:</label>
-                                        <div class="select">
-                                            <select name="EmploymentType" class="form-control" required>
-                                                <option value="">Select Type</option>
-                                                <option value="Full Time">Full Time</option>
-                                                <option value="Part Time">Part Time</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
+
                         </div>
                         <div class="row">
                             <div class="col-md-6">
@@ -156,17 +162,12 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <div style="padding: 0px" class="container">
-                                        <label>Fields:</label>
+                                        <label>Employment Type:</label>
                                         <div class="select">
-                                            <select name="EmploymentType" id="jobField" class="form-control" required onchange="updateJobTitleOptions()">
-                                                <option value="">Select Job Fields</option>
-                                                <option value="Technology and IT">Technology and IT</option>
-                                                <option value="Engineering">Engineering</option>
-                                                <option value="Business and Finance">Business and Finance</option>
-                                                <option value="Healthcare and Medicine">Healthcare and Medicine</option>
-                                                <option value="Education">Education</option>
-                                                <option value="Marketing and Advertising">Marketing and Advertising</option>
-                                                <option value="Sales and Retail">Sales and Retail</option>
+                                            <select name="EmploymentType" class="form-control" required>
+                                                <option value="">Select Type</option>
+                                                <option value="Full Time">Full Time</option>
+                                                <option value="Part Time">Part Time</option>
                                             </select>
                                         </div>
                                     </div>

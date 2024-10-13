@@ -9,7 +9,7 @@ import java.sql.PreparedStatement;
 public class AddJobDB {
 
     public boolean insertJob(AddJobData addJobData) {
-        String sql = "INSERT INTO job_add (r_id, Job_Title, EmploymentType, Minsalary, Maxsalary, JobDescripton, Qualification_and_Skill,Benefits, PosterImg) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO job_add (r_id, Job_Title, EmploymentType, Minsalary, Maxsalary, JobDescripton, Qualification_and_Skill,Benefits, PosterImg,JobCategories) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
 
         try {
             Connection con = MyDatabase.getConnection();
@@ -25,6 +25,7 @@ public class AddJobDB {
             psmt.setString(7, addJobData.getQualificaton_skill());
             psmt.setString(8, addJobData.getBenefites());
             psmt.setBytes(9, addJobData.getHpimg());
+            psmt.setString(10,addJobData.getJob_Categories());
 
 
 

@@ -181,36 +181,64 @@
 
     <button type="button" class=" btn-success" data-toggle="modal" data-target="#deleteModal">Approve Job</button>
 
+
     <!-- Delete Modal -->
-    <form action="ApplyStatusServlet" method="POST" id="deleteForm">
-        <div class="modal" id="deleteModal">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <!-- Modal Header -->
-                    <div class="modal-header">
-                        <h4 class="modal-title">Approve Job</h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-                    <!-- Modal Body -->
-                    <div class="modal-body">
-                        <h6 style="color: #cb4b16">Are You Sure You Want to Approve This Job?</h6>
-                    </div>
-                    <!-- Modal Footer -->
-                    <div class="modal-footer">
-                        <input type="hidden" name="a_id" value="<%=a_id%>">
-                        <input type="hidden" name="status" value="Approve">
-                        <button type="submit" class="btn btn-primary" style="background-color: green">Approve</button>
-                        <button type="button" class="btn btn-danger" style="background-color: red" data-dismiss="modal">Reject</button>
-                    </div>
+
+    <button type="button" class=" btn-success" data-toggle="modal" data-target="#deleteModal1" style="background-color: #c82333">Reject Job</button>
+    <button class="btn btn-light" type="submit" style="color: white" id="buttonback" name="back">
+        <a href="./?pname=JobApply">Back</a>
+    </button>
+
+
+</div>
+<form action="ApplyStatusServlet" method="POST" id="deleteForm">
+    <div class="modal" id="deleteModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Approve Job</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <h6 style="color: #cb4b16">Are You Sure You Want to Approve This Job?</h6>
+                </div>
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <input type="hidden" name="a_id" value="<%=a_id%>">
+                    <input type="hidden" name="status" value="Approve">
+                    <button type="submit" class="btn btn-primary" style="background-color: green">Approve</button>
+                    <button type="button" class="btn btn-danger" style="background-color: red" data-dismiss="modal">Cancel</button>
                 </div>
             </div>
         </div>
-    </form>
-
-    <button class="btn btn-outline-dark" type="submit" id="buttonback" name="back">
-        <a href="./?pname=JobApply">Back</a>
-    </button>
-</div>
+    </div>
+</form>
+<form action="ApplyStatusServlet" method="POST" id="deleteForm1">
+    <div class="modal" id="deleteModal1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Reject Job</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <h6 style="color: #cb4b16">Are You Sure You Want to Approve This Job?</h6>
+                </div>
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <input type="hidden" name="a_id" value="<%=a_id%>">
+                    <input type="hidden" name="status" value="Reject">
+                    <button type="submit" class="btn btn-primary" style="background-color: green">Reject</button>
+                    <button type="button" class="btn btn-danger" style="background-color: red" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
 
 <%
         }

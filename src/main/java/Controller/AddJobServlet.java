@@ -24,6 +24,7 @@ public class AddJobServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String r_id = req.getParameter("r_id");
         String jobTitle = req.getParameter("jobTitle");
+        String JobCategories = req.getParameter("JobCategories");
         String Minsalary = req.getParameter("Minsalary");
         String Maxsalary = req.getParameter("Maxsalary");
         String EmploymentType = req.getParameter("EmploymentType");
@@ -33,24 +34,11 @@ public class AddJobServlet extends HttpServlet {
         Part Posterimg = req.getPart("Hpimg");
         InputStream inputStream1 = Posterimg.getInputStream();
         byte[] posterimg = readFile(inputStream1);
-
-
-        System.out.println(r_id);
-        System.out.println(jobTitle);
-        System.out.println(Minsalary);
-        System.out.println(Maxsalary);
-        System.out.println(EmploymentType);
-        System.out.println(Jobdesc);
-        System.out.println(Qualification_skill);
-        System.out.println(Benefits);
-
-
-
 //        String imgname = extractFileName(cimg);
 //        String imguploadpath = getServletContext().getRealPath("/") + "upload/" + imgname;
 //        cimg.write(imguploadpath);
 
-        AddJobData jobdata = new AddJobData(r_id, jobTitle, EmploymentType, Minsalary, Maxsalary, Jobdesc, Qualification_skill, Benefits, posterimg);
+        AddJobData jobdata = new AddJobData(r_id, jobTitle, JobCategories,EmploymentType, Minsalary, Maxsalary, Jobdesc, Qualification_skill, Benefits, posterimg);
         AddJobDB jDB = new AddJobDB();
         boolean insert = jDB.insertJob(jobdata);
 
