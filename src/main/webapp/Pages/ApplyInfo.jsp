@@ -111,7 +111,7 @@
     <link rel="stylesheet" href="../RecruiterStyle/style.css">
     <link rel="stylesheet" href="../RecruiterStyle/Doc/css/style.css">
 </head>
-<body>
+<body style="padding-bottom: 0px">
 
 <%
     String id = request.getParameter("a_id");

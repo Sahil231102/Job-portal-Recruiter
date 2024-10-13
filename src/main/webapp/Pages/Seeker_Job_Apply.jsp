@@ -217,16 +217,23 @@
                                %>
                                 <li style="color: red;"><%=JobStatus%></li>
                                 <%
-                                    }
-                                   else
+                                    } else if ( "Reject".equals(JobStatus)) {
+                                        
+
+                                %>
+                                <li style="color: red;"><%=JobStatus%></li>
+                                <%
+                                    } else
                                     {
-
-
                                 %>
                                 <li style="color: forestgreen;"><%=JobStatus%></li>
                                 <%
-                                    }
+
+                                }
                                 %>
+
+
+                                    
 
                             </ul>
                         </div>
